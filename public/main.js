@@ -26,7 +26,7 @@ function renderList(lists) {
     const listContent = document.createElement('div');
     const listText = document.createElement('p');
     listText.classList.add('list-text');
-    listText.textContent = list.name;
+    listText.textContent = list.contents;
 
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "삭제";
@@ -44,13 +44,13 @@ function renderList(lists) {
 listForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const listName = listInput.value;
+  const listContents = listInput.value;
 
   try {
     const response = await fetch(LIST_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: listName }),
+      body: JSON.stringify({ contents: listContents }),
     });
 
     if (response.ok) {

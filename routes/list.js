@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 
 const listSchema = new mongoose.Schema({
-  name: {
+  contents: {
     type: String,
     required: true,
   },
@@ -26,10 +26,10 @@ router.get("/", async (req, res) => {
 
 // 할 일 추가
 router.post("/", async (req, res) => {
-  const { name } = req.body;
+  const { contents } = req.body;
 
   try {
-    const newList = new List({ name, date: new Date() });
+    const newList = new List({ contents, date: new Date() });
     await newList.save();
     res.status(201).json(newList);
   } catch (err) {
