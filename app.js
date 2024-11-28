@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/items', ListRouter);
+app.use('/list', ListRouter);
 
 app.listen(PORT, () => {
   console.log('서버 실행');

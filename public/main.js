@@ -2,7 +2,7 @@ const listForm = document.querySelector("#list-form");
 const listInput = document.querySelector("#list-input");
 const listWrap = document.querySelector("#list-wrap");
 
-const LIST_URL = "/api/items";
+const LIST_URL = "/list";
 
 async function fetchList() {
   try {
