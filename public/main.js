@@ -18,13 +18,25 @@ function renderList(lists) {
   listWrap.innerHTML = "";
   lists.forEach((list) => {
     const li = document.createElement("li");
-    li.textContent = list.name;
+
+    const listDate = document.createElement('strong');
+    listDate.classList.add('list-date');
+    listDate.textContent = new Date(list.date).toLocaleDateString();
+
+    const listContent = document.createElement('div');
+    const listText = document.createElement('p');
+    listText.classList.add('list-text');
+    listText.textContent = list.name;
 
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "삭제";
     deleteButton.addEventListener("click", () => deleteList(list._id));
 
-    li.appendChild(deleteButton);
+    listContent.appendChild(listText);
+    listContent.appendChild(deleteButton);
+
+    li.appendChild(listDate);
+    li.appendChild(listContent);
     listWrap.appendChild(li);
   });
 }

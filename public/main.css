@@ -1,6 +1,4 @@
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
   background-color: #f4f4f9;
 }
 
@@ -37,10 +35,30 @@ ul {
 }
 
 li {
+  margin: 10px 0;
+}
+
+#list-wrap li strong {
+  display: block;
+}
+
+#list-wrap li div {
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
   align-items: center;
   margin: 10px 0;
+  padding: 10px 0;
+  border-top: 1px solid #000;
+}
+
+#list-wrap li p {
+  margin: 0;
+  flex-grow: 1;
+}
+
+#list-wrap li button {
+  flex-grow: 1;
+  max-width: 50px;
 }
 
 li button {
@@ -48,5 +66,6 @@ li button {
   color: white;
   border: none;
   padding: 5px 10px;
+  height: 40px;
   cursor: pointer;
 }
