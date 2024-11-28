@@ -4,25 +4,25 @@ const listWrap = document.querySelector("#list-wrap");
 
 const LIST_URL = "/api/items";
 
-async function fetchTasks() {
+async function fetchList() {
   try {
     const response = await fetch(LIST_URL);
     const lists = await response.json();
-    renderTasks(lists);
+    renderList(lists);
   } catch (err) {
     console.log("오류 발생 : ", err);
   }
 }
 
-function renderTasks(tasks) {
+function renderList(lists) {
   listWrap.innerHTML = "";
-  tasks.forEach((task) => {
+  lists.forEach((list) => {
     const li = document.createElement("li");
-    li.textContent = task.name;
+    li.textContent = list.name;
 
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "삭제";
-    deleteButton.addEventListener("click", () => deleteList(task._id));
+    deleteButton.addEventListener("click", () => deleteList(list._id));
 
     li.appendChild(deleteButton);
     listWrap.appendChild(li);
@@ -43,7 +43,7 @@ listForm.addEventListener("submit", async (e) => {
 
     if (response.ok) {
       listInput.value = "";
-      fetchTasks();
+      fetchList();
     }
   } catch (err) {
     console.log("에러 발생 : ", err);
@@ -53,15 +53,15 @@ listForm.addEventListener("submit", async (e) => {
 async function deleteList(id) {
   try {
     const response = await fetch(`${LIST_URL}/${id}`, {
-      method: 'DELETE'
+      method: "DELETE",
     });
 
-    if(response.ok){
-      fetchTasks();
+    if (response.ok) {
+      fetchList();
     }
-  }catch(err) {
-    console.log('에러 발생 : ', err)
+  } catch (err) {
+    console.log("에러 발생 : ", err);
   }
 }
 
-fetchTasks();
+fetchList();
